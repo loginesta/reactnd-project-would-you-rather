@@ -6,6 +6,9 @@ class Login extends Component {
     return (
       <div>
         <h3>Login Page</h3>
+        {Object.keys(this.props.users).map(user => (
+          <li key={user}>{user}</li>
+        ))}
       </div>
     );
   }
@@ -13,7 +16,7 @@ class Login extends Component {
 
 function mapStateToProps({ users }) {
   return {
-    users: users,
+    users,
   };
 }
 
