@@ -5,17 +5,15 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h3>Home page</h3>
-        <ul />
+        <h3>Hello {this.props.authedUserId}</h3>
       </div>
     );
   }
 }
 
-function mapStateToProps({ questions, users }) {
+function mapStateToProps({ authedUser }) {
   return {
-    questions,
-    users,
+    authedUserId: Object.values(authedUser),
   };
 }
 
