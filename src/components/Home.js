@@ -3,17 +3,20 @@ import { connect } from "react-redux";
 
 class Home extends Component {
   render() {
+    const { avatarURL, id } = this.props.user;
+    console.log(this.props);
     return (
       <div>
-        <h3>Hello {this.props.authedUserId}</h3>
+        <h3>Hello {id}</h3>
+        <img src={avatarURL} alt="" />
       </div>
     );
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    authedUserId: Object.values(authedUser),
+    user: users[Object.values(authedUser)],
   };
 }
 

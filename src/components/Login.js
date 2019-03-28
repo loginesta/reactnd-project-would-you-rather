@@ -13,13 +13,14 @@ class Login extends Component {
   };
 
   render() {
+    const { users } = this.props;
+
     return (
       <div>
         <h3>Login Page</h3>
-        {Object.values(this.props.users).map(user => (
-          <li key={user.id} id={user.id} onClick={this.handleSetAuthedUser}>
-            <img src={user.avatar} alt="" />
-            {user.name}
+        {Object.keys(users).map(id => (
+          <li key={id} id={id} onClick={this.handleSetAuthedUser}>
+            {users[id].name}
           </li>
         ))}
       </div>
