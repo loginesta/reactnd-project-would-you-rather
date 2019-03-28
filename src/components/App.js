@@ -17,7 +17,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className="container">
-            {this.props.loading === true ? <Login /> : <Home />}
+            {this.props.loggedIn === true ? <Home /> : <Login />}
           </div>
         </Fragment>
       </Router>
@@ -27,7 +27,7 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null,
+    loggedIn: authedUser !== null,
   };
 }
 
