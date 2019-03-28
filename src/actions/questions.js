@@ -1,4 +1,4 @@
-import { _saveQuestion, _saveQuestionAnswer } from "../utils/_DATA";
+import { saveQuestion, saveQuestionAnswer } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
@@ -19,7 +19,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 
     dispatch(showLoading());
 
-    return _saveQuestion(question)
+    return saveQuestion(question)
       .then(question => dispatch(addQuestion(question)))
       .then(() => dispatch(hideLoading()));
   };
@@ -45,7 +45,7 @@ export function handleQuestionAnswer(info) {
   return dispatch => {
     dispatch(answerQuestion(info));
 
-    return _saveQuestionAnswer(info).catch(e => {
+    return saveQuestionAnswer(info).catch(e => {
       console.warn("Error in handleQuestionAnswer: ", e);
       dispatch(answerQuestion(info));
       alert("There was an error answering the question. Try again.");
