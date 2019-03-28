@@ -1,57 +1,54 @@
-import { saveLikeToggle, saveTweet } from "../utils/api";
+import { _saveQuestion, _saveQuestionAnswer } from "../utils/_DATA";
 import { showLoading, hideLoading } from "react-redux-loading";
 
-export const RECEIVE_TWEETS = "RECEIVE_TWEETS";
-export const TOGGLE_TWEET = "TOGGLE_TWEET";
-export const ADD_TWEET = "ADD_TWEET";
+export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
+export const ANSWER_QUESTION = "ANSWER_QUESTION";
+export const ADD_QUESTION = "ADD_QUESTION";
 
-function addTweet(tweet) {
+function addQuestion(question) {
   return {
-    type: ADD_TWEET,
-    tweet,
+    type: ADD_QUESTION,
+    question,
   };
 }
 
-export function handleAddTweet(text, replyingTo) {
+export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
+    const question = { optionOneText, optionTwoText, author: authedUser };
 
     dispatch(showLoading());
 
-    return saveTweet({
-      text,
-      author: authedUser,
-      replyingTo,
-    })
-      .then(tweet => dispatch(addTweet(tweet)))
+    return _saveQuestion(question)
+      .then(question => dispatch(addQuestion(question)))
       .then(() => dispatch(hideLoading()));
   };
 }
 
-export function receiveTweets(tweets) {
+export function receiveQuestions(questions) {
   return {
-    type: RECEIVE_TWEETS,
-    tweets,
+    type: RECEIVE_QUESTIONS,
+    questions,
   };
 }
 
-function toggleTweet({ id, authedUser, hasLiked }) {
+function answerQuestion({ authedUser, qid, answer }) {
   return {
-    type: TOGGLE_TWEET,
-    id,
+    type: ANSWER_QUESTION,
     authedUser,
-    hasLiked,
+    qid,
+    answer,
   };
 }
 
-export function handleToggleTweet(info) {
+export function handleQuestionAnswer(info) {
   return dispatch => {
-    dispatch(toggleTweet(info));
+    dispatch(answerQuestion(info));
 
-    return saveLikeToggle(info).catch(e => {
-      console.warn("Error in handleToggleTweet: ", e);
-      dispatch(toggleTweet(info));
-      alert("The was an error liking the tweet. Try again.");
+    return _saveQuestionAnswer(info).catch(e => {
+      console.warn("Error in handleQuestionAnswer: ", e);
+      dispatch(answerQuestion(info));
+      alert("There was an error answering the question. Try again.");
     });
   };
 }
