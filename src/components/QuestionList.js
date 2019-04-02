@@ -4,7 +4,7 @@ import Question from "./Question";
 
 class QuestionList extends Component {
   render() {
-    const { questions, user, users } = this.props;
+    const { questions } = this.props;
     return (
       <ul>
         {Object.keys(questions).map(qid => (
@@ -17,10 +17,8 @@ class QuestionList extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ questions }) {
   return {
-    user: users[Object.values(authedUser)],
-    users,
     questions,
   };
 }

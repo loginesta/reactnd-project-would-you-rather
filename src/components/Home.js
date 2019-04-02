@@ -11,8 +11,6 @@ class Home extends Component {
 
   render() {
     const { avatarURL, id } = this.props.user;
-    const { questions } = this.props;
-    console.log(this.props);
     return (
       <div>
         <h3>Hello {id}</h3>
@@ -24,10 +22,9 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users }) {
   return {
     user: users[Object.values(authedUser)],
-    questions,
   };
 }
 

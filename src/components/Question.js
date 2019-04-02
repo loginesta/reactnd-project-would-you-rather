@@ -9,7 +9,7 @@ class Question extends Component {
         <div className="question-author">{question.author}</div>
         <div className="question-body">
           <div className="question-author-avatar">
-            <img src={users[question.author].avatarURL} width="60" />
+            <img src={users[question.author].avatarURL} width="60" alt="" />
           </div>
           <div className="questions-options">
             {question.optionOne.text}
