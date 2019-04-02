@@ -3,14 +3,13 @@ import { connect } from "react-redux";
 import Question from "./Question";
 
 class QuestionList extends Component {
-  render() {
-    const { questions } = this.props;
+  sortQuestions = questions => {
     const questionsArray = Object.keys(questions).map(qid => questions[qid]);
-    const sortedQuestions = questionsArray.sort(
-      (a, b) => b.timestamp - a.timestamp,
-    );
+    return questionsArray.sort((a, b) => b.timestamp - a.timestamp);
+  };
 
-    console.log(sortedQuestions);
+  render() {
+    const sortedQuestions = this.sortQuestions(this.props.questions);
 
     return (
       <ul>
