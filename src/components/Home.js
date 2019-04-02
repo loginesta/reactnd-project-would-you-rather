@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { unsetAuthedUser } from "../actions/authedUser";
+import QuestionList from "./QuestionList";
 
 class Home extends Component {
   handleLogout = () => {
@@ -17,14 +18,7 @@ class Home extends Component {
         <h3>Hello {id}</h3>
         <img src={avatarURL} alt="" />
         <p onClick={this.handleLogout}>Logout</p>
-        {Object.keys(questions).map(qid => (
-          <li key={qid} id={qid}>
-            {questions[qid].author}
-            {questions[qid].optionOne.text}
-            {questions[qid].optionTwo.text}
-            {questions[qid].timestamp}
-          </li>
-        ))}
+        <QuestionList />
       </div>
     );
   }
