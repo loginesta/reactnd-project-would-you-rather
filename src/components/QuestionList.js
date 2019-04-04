@@ -47,7 +47,7 @@ class QuestionList extends Component {
     const filteredQuestions = this.filterQuestions();
 
     return (
-      <div className="distance-from-navbar">
+      <div className="main-container">
         <div className="btn-group" role="group">
           <button
             type="button"
