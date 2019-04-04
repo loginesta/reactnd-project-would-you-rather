@@ -10,7 +10,7 @@ class Nav extends Component {
   };
 
   render() {
-    const { avatarURL, id } = this.props.user;
+    const { avatarURL, name } = this.props.user;
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <button
@@ -56,7 +56,7 @@ class Nav extends Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img className="avatar" src={avatarURL} alt="" /> {id}
+                  <img className="avatar" src={avatarURL} alt="" /> {name}
                 </a>
                 <div
                   className="dropdown-menu"

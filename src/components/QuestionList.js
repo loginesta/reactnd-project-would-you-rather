@@ -4,7 +4,7 @@ import Question from "./Question";
 
 class QuestionList extends Component {
   state = {
-    showAnswered: true,
+    showAnswered: false,
   };
 
   sortQuestions = questions => {
@@ -53,23 +53,23 @@ class QuestionList extends Component {
             type="button"
             className={
               this.state.showAnswered
-                ? "btn btn-outline-secondary active"
-                : "btn btn-outline-secondary"
-            }
-            onClick={e => this.handleToggleFilter(true)}
-          >
-            Answered
-          </button>
-          <button
-            type="button"
-            className={
-              this.state.showAnswered
                 ? "btn btn-outline-secondary"
                 : "btn btn-outline-secondary active"
             }
             onClick={e => this.handleToggleFilter(false)}
           >
             Unanswered
+          </button>
+          <button
+            type="button"
+            className={
+              this.state.showAnswered
+                ? "btn btn-outline-secondary active"
+                : "btn btn-outline-secondary"
+            }
+            onClick={e => this.handleToggleFilter(true)}
+          >
+            Answered
           </button>
         </div>
 
