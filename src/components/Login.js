@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Redirect } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 
 class Login extends Component {
+  state = {
+    userId: null,
+  };
+
   handleSetAuthedUser = event => {
     if (event.target.value !== "") {
+      this.setState(() => ({
+        userId: event.target.value,
+      }));
+
       const { dispatch } = this.props;
       dispatch(
         setAuthedUser({
@@ -15,7 +24,16 @@ class Login extends Component {
   };
 
   render() {
-    const { users } = this.props;
+    const { users, history } = this.props;
+
+    if (this.state.userId) {
+      const redirect = history.location.state;
+
+      if (redirect !== null) {
+        return <Redirect to={redirect} push={true} />;
+      }
+      return <Redirect to="/" />;
+    }
 
     return (
       <div className="login-wrapper">
