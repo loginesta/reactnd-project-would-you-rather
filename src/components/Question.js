@@ -6,14 +6,19 @@ class Question extends Component {
     const { question, users } = this.props;
     return (
       <div className="question">
-        <div className="question-author">{question.author}</div>
+        <div className="question-author">
+          {users[question.author].name} asks...
+        </div>
         <div className="question-body">
           <div className="question-author-avatar">
             <img src={users[question.author].avatarURL} width="60" alt="" />
           </div>
-          <div className="questions-options">
-            {question.optionOne.text}
-            {question.optionTwo.text}
+          <div className="question-options">
+            <p>Would you rather:</p>
+            <ul>
+              <li>{question.optionOne.text}</li>
+              <li>{question.optionTwo.text}</li>
+            </ul>
           </div>
         </div>
       </div>
