@@ -19,3 +19,19 @@ code {
   max-width: 330px;
   width: 100%;
 }
+
+.navbar ul>li {
+  line-height: 55px;
+}
+
+.navbar .avatar {
+  border-radius: 100px;
+  display: inline-block;
+  height: 50px;
+  margin: 5px;
+  width: 50px;
+}
+
+.distance-from-navbar {
+  margin-top: 100px;
+}
