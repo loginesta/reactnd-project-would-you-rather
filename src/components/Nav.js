@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { unsetAuthedUser } from "../actions/authedUser";
 
 class Nav extends Component {
@@ -29,46 +30,45 @@ class Nav extends Component {
           <div className="col-auto mr-auto">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
+                <Link to="/" className="nav-link">
                   Home <span className="sr-only">(current)</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link to="/add" className="nav-link">
                   New Question
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link to="/leaderboard" className="nav-link">
                   Leader Board
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="col-auto">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
+                <div
+                  className="nav-link dropdown-toggle fake-button"
                   id="logged-in-dropdown"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
                   <img className="avatar" src={avatarURL} alt="" /> {name}
-                </a>
+                </div>
                 <div
                   className="dropdown-menu"
                   aria-labelledby="logged-in-dropdown"
                 >
-                  <a
+                  <Link
+                    to="/logout"
                     className="dropdown-item"
-                    href="#"
                     onClick={this.handleLogout}
                   >
                     Logout
-                  </a>
+                  </Link>
                 </div>
               </li>
             </ul>
