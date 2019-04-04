@@ -10,6 +10,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.avatar {
+  border-radius: 100px;
+  display: inline-block;
+  height: 50px;
+  margin: 5px;
+  width: 50px;
+}
+
 .login-wrapper {
   height: 100vh;
 }
@@ -24,14 +32,10 @@ code {
   line-height: 55px;
 }
 
-.navbar .avatar {
-  border-radius: 100px;
-  display: inline-block;
-  height: 50px;
-  margin: 5px;
-  width: 50px;
-}
-
 .distance-from-navbar {
   margin-top: 100px;
+}
+
+.card {
+  margin: 1em 0;
 }

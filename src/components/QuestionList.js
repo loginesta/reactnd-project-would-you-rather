@@ -72,13 +72,12 @@ class QuestionList extends Component {
             Unanswered
           </button>
         </div>
-        <ul>
-          {Object.keys(filteredQuestions).map(qid => (
-            <li key={qid} id={qid}>
-              <Question question={filteredQuestions[qid]} />
-            </li>
-          ))}
-        </ul>
+
+        {Object.keys(filteredQuestions).map(qid => (
+          <div className="card" key={qid} id={qid}>
+            <Question question={filteredQuestions[qid]} />
+          </div>
+        ))}
       </div>
     );
   }

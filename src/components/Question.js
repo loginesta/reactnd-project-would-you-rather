@@ -6,19 +6,33 @@ class Question extends Component {
     const { question, users } = this.props;
     return (
       <div className="question">
-        <div className="question-author">
-          {users[question.author].name} asks...
+        <div className="card-header">
+          <div className="row align-items-center">
+            <div className="col-auto mr-auto">
+              <img
+                className="avatar"
+                src={users[question.author].avatarURL}
+                width="60"
+                alt=""
+              />
+              {users[question.author].name} asks...
+            </div>
+            <div className="col-auto">
+              <button className="btn btn-outline-primary">View poll</button>
+            </div>
+          </div>
         </div>
         <div className="question-body">
-          <div className="question-author-avatar">
-            <img src={users[question.author].avatarURL} width="60" alt="" />
-          </div>
           <div className="question-options">
-            <p>Would you rather:</p>
-            <ul>
-              <li>{question.optionOne.text}</li>
-              <li>{question.optionTwo.text}</li>
-            </ul>
+            <div className="col-sm">
+              <p>
+                <strong>Would you rather:</strong>
+              </p>
+              <ul>
+                <li>{question.optionOne.text}</li>
+                <li>{question.optionTwo.text}</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
