@@ -4,25 +4,39 @@ import { setAuthedUser } from "../actions/authedUser";
 
 class Login extends Component {
   handleSetAuthedUser = event => {
-    const { dispatch } = this.props;
-    dispatch(
-      setAuthedUser({
-        id: event.target.id,
-      }),
-    );
+    if (event.target.value !== "") {
+      const { dispatch } = this.props;
+      dispatch(
+        setAuthedUser({
+          id: event.target.value,
+        }),
+      );
+    }
   };
 
   render() {
     const { users } = this.props;
 
     return (
-      <div>
-        <h3>Login Page</h3>
-        {Object.keys(users).map(id => (
-          <li key={id} id={id} onClick={this.handleSetAuthedUser}>
-            {users[id].name}
-          </li>
-        ))}
+      <div className="login-wrapper">
+        <form className="login-form">
+          <h1 className="h3 mb-3 font-weight-normal">Login Page</h1>
+          <label className="sr-only">User</label>
+          <select
+            id="userName"
+            className="form-control"
+            onChange={this.handleSetAuthedUser}
+          >
+            <option value="" defaultValue>
+              Please select a user
+            </option>
+            {Object.keys(users).map(id => (
+              <option key={id} value={id}>
+                {users[id].name}
+              </option>
+            ))}
+          </select>
+        </form>
       </div>
     );
   }

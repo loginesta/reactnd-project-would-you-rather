@@ -9,3 +9,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.login-wrapper {
+  height: 100vh;
+}
+
+.login-form {
+  margin: 30% auto;
+  max-width: 330px;
+  width: 100%;
+}
