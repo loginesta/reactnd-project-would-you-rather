@@ -3,17 +3,21 @@ import { connect } from "react-redux";
 import Question from "./Question";
 
 class QuestionList extends Component {
+  state = {
+    showingAnswered: true,
+  };
+
   sortQuestions = questions => {
     const questionsArray = Object.keys(questions).map(qid => questions[qid]);
     return questionsArray.sort((a, b) => b.timestamp - a.timestamp);
   };
 
-  filterQuestions = criteria => {
+  filterQuestions = () => {
     const sortedQuestions = this.sortQuestions(this.props.questions);
     const { authedUser } = this.props;
     let questions = [];
 
-    if (criteria === "answered") {
+    if (this.state.showingAnswered) {
       questions = sortedQuestions.filter(function(question) {
         return (
           question.optionOne.votes.includes(authedUser.id) ||
@@ -32,15 +36,29 @@ class QuestionList extends Component {
   };
 
   render() {
-    const filteredQuestions = this.filterQuestions("answered");
+    const filteredQuestions = this.filterQuestions();
 
     return (
       <div className="distance-from-navbar">
         <div className="btn-group" role="group">
-          <button type="button" className="btn btn-outline-secondary">
+          <button
+            type="button"
+            className={
+              this.state.showingAnswered
+                ? "btn btn-outline-secondary active"
+                : "btn btn-outline-secondary"
+            }
+          >
             Answered
           </button>
-          <button type="button" className="btn btn-outline-secondary">
+          <button
+            type="button"
+            className={
+              this.state.showingAnswered
+                ? "btn btn-outline-secondary"
+                : "btn btn-outline-secondary active"
+            }
+          >
             Unanswered
           </button>
         </div>
