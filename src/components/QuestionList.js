@@ -4,7 +4,7 @@ import Question from "./Question";
 
 class QuestionList extends Component {
   state = {
-    showingAnswered: true,
+    showAnswered: true,
   };
 
   sortQuestions = questions => {
@@ -17,7 +17,7 @@ class QuestionList extends Component {
     const { authedUser } = this.props;
     let questions = [];
 
-    if (this.state.showingAnswered) {
+    if (this.state.showAnswered) {
       questions = sortedQuestions.filter(function(question) {
         return (
           question.optionOne.votes.includes(authedUser.id) ||
@@ -35,6 +35,14 @@ class QuestionList extends Component {
     return questions;
   };
 
+  handleToggleFilter = answered => {
+    this.setState(function() {
+      return {
+        showAnswered: answered,
+      };
+    });
+  };
+
   render() {
     const filteredQuestions = this.filterQuestions();
 
@@ -44,20 +52,22 @@ class QuestionList extends Component {
           <button
             type="button"
             className={
-              this.state.showingAnswered
+              this.state.showAnswered
                 ? "btn btn-outline-secondary active"
                 : "btn btn-outline-secondary"
             }
+            onClick={e => this.handleToggleFilter(true)}
           >
             Answered
           </button>
           <button
             type="button"
             className={
-              this.state.showingAnswered
+              this.state.showAnswered
                 ? "btn btn-outline-secondary"
                 : "btn btn-outline-secondary active"
             }
+            onClick={e => this.handleToggleFilter(false)}
           >
             Unanswered
           </button>
