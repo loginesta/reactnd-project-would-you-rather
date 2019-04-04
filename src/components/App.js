@@ -12,12 +12,13 @@ class App extends Component {
   }
 
   render() {
+    const loggedIn = this.props.loggedIn;
     return (
       <Router>
         <Fragment>
           <LoadingBar />
           <div className="container">
-            {this.props.loggedIn === true ? <Home /> : <Login />}
+            {loggedIn === true ? <Home /> : <Login />}
           </div>
         </Fragment>
       </Router>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Question extends Component {
   render() {
@@ -18,7 +19,12 @@ class Question extends Component {
               {users[question.author].name} asks...
             </div>
             <div className="col-auto">
-              <button className="btn btn-outline-primary">View poll</button>
+              <Link
+                to={`/questions/${question.id}`}
+                className="btn btn-outline-primary"
+              >
+                View poll
+              </Link>
             </div>
           </div>
         </div>

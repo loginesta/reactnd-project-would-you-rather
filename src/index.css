@@ -39,3 +39,7 @@ code {
 .card {
   margin: 1em 0;
 }
+
+.fake-button {
+  cursor: pointer;
+}
