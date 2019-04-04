@@ -26,47 +26,53 @@ class Nav extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="defaultNavbar">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">
-                Home <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                New Question
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Leader Board
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="logged-in-dropdown"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img className="avatar" src={avatarURL} alt="" /> {id}
-              </a>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="logged-in-dropdown"
-              >
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={this.handleLogout}
-                >
-                  Logout
+          <div className="col-auto mr-auto">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active">
+                <a className="nav-link" href="#">
+                  Home <span className="sr-only">(current)</span>
                 </a>
-              </div>
-            </li>
-          </ul>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  New Question
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#">
+                  Leader Board
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-auto">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="logged-in-dropdown"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img className="avatar" src={avatarURL} alt="" /> {id}
+                </a>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="logged-in-dropdown"
+                >
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={this.handleLogout}
+                  >
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     );
