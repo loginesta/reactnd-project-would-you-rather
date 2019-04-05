@@ -86,7 +86,7 @@ class Leaderboard extends Component {
                   </h6>
                 </div>
               </div>
-              <div className="col-sm-3 align-middle text-center">
+              <div className="col-sm-3 align-items-center text-center">
                 <div className="ranking-wrapper">
                   <h3>Score</h3>
                   <h2>

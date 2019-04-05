@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { unsetAuthedUser } from "../actions/authedUser";
 
 class Nav extends Component {
@@ -29,9 +30,9 @@ class Nav extends Component {
         <div className="collapse navbar-collapse" id="defaultNavbar">
           <div className="col-auto mr-auto">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <Link to="/" className="nav-link">
-                  Home <span className="sr-only">(current)</span>
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
@@ -41,7 +42,7 @@ class Nav extends Component {
               </li>
               <li className="nav-item">
                 <Link to="/leaderboard" className="nav-link">
-                  Leader Board
+                  Leaderboard
                 </Link>
               </li>
             </ul>
