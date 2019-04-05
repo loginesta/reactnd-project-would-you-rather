@@ -122,7 +122,6 @@ class ViewQuestion extends Component {
                 <img
                   className="avatar"
                   src={users[question.author].avatarURL}
-                  width="60"
                   alt=""
                 />
                 {users[question.author].name} asks...
