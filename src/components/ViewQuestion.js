@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import authedUser from "../reducers/authedUser";
 
 class ViewQuestion extends Component {
   getQuestionById = () => {
@@ -20,9 +19,6 @@ class ViewQuestion extends Component {
   };
 
   showResults = (question, authedUserId) => {
-    console.log(question.optionOne);
-    console.log(question.optionTwo);
-
     const votesOptionOne = question.optionOne.votes.length,
       votesOptionTwo = question.optionTwo.votes.length,
       votesTotal = votesOptionOne + votesOptionTwo,
@@ -34,13 +30,44 @@ class ViewQuestion extends Component {
       authedUserId,
     );
 
-    console.log(percentageOptionOne, percentageOptionTwo);
-    console.log(optionChosenByUser);
-
     return (
-      <div className="row">
-        <button className="">{question.optionOne.text}</button>
-        <button className="">{question.optionTwo.text}</button>
+      <div className="row align-items-center">
+        <div
+          className={
+            optionChosenByUser === "one"
+              ? "col-sm alert alert-warning"
+              : "col-sm"
+          }
+        >
+          {optionChosenByUser === "one" && this.attachBadge()}
+          <button className="btn btn-primary btn-lg btn-block">
+            {question.optionOne.text}
+            <span class="badge badge-light">{percentageOptionOne}%</span>
+          </button>
+          <p className="text-center">
+            <strong>
+              ({votesOptionOne} out of {votesTotal} votes)
+            </strong>
+          </p>
+        </div>
+        <div
+          className={
+            optionChosenByUser === "two"
+              ? "col-sm alert alert-warning"
+              : "col-sm"
+          }
+        >
+          {optionChosenByUser === "two" && this.attachBadge()}
+          <button className="btn btn-secondary btn-lg btn-block">
+            {question.optionTwo.text}
+            <span class="badge badge-light">{percentageOptionTwo}%</span>
+          </button>
+          <p className="text-center">
+            <strong>
+              ({votesOptionTwo} out of {votesTotal} votes)
+            </strong>
+          </p>
+        </div>
       </div>
     );
   };
@@ -51,11 +78,23 @@ class ViewQuestion extends Component {
     } else return "two";
   };
 
+  attachBadge = () => {
+    return <span class="badge badge-warning option-chosen">Your choice</span>;
+  };
+
   showOptions = question => {
     return (
-      <div className="row">
-        <button>{question.optionOne.text}</button>
-        <button>{question.optionTwo.text}</button>
+      <div className="row align-items-center">
+        <div className="col-sm text-center">
+          <button className="btn btn-lg btn-outline-primary btn-block">
+            {question.optionOne.text}
+          </button>
+        </div>
+        <div className="col-sm text-center">
+          <button className="btn btn-lg btn-outline-secondary btn-block">
+            {question.optionTwo.text}
+          </button>
+        </div>
       </div>
     );
   };

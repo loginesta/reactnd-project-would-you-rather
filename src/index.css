@@ -43,3 +43,21 @@ code {
 .fake-button {
   cursor: pointer;
 }
+
+.question-options {
+  padding: 1em 0;
+}
+
+.question-options button {
+  margin: .7em 0;
+}
+
+.question-options .badge {
+  margin: 0 .3em;
+}
+
+.option-chosen {
+  position: absolute;
+  right: .5em;
+  top: -1em;
+}
