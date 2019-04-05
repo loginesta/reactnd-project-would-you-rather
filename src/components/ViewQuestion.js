@@ -145,6 +145,7 @@ class ViewQuestion extends Component {
     );
   }
 }
+
 function mapStateToProps({ authedUser, questions, users }) {
   return {
     authedUser,
