@@ -11,7 +11,7 @@ class ViewQuestion extends Component {
     return thisQuestion.shift();
   };
 
-  userAlreadyAnsweredThisQuestion = (authedUserId, question) => {
+  isAnsweredByUser = (question, authedUserId) => {
     return (
       question.optionOne.votes.includes(authedUserId) ||
       question.optionTwo.votes.includes(authedUserId)
@@ -22,8 +22,8 @@ class ViewQuestion extends Component {
     const votesOptionOne = question.optionOne.votes.length,
       votesOptionTwo = question.optionTwo.votes.length,
       votesTotal = votesOptionOne + votesOptionTwo,
-      percentageOptionOne = (votesOptionOne / votesTotal) * 100,
-      percentageOptionTwo = (votesOptionTwo / votesTotal) * 100;
+      percentageOptionOne = (votesOptionOne / votesTotal).toFixed(2) * 100,
+      percentageOptionTwo = (votesOptionTwo / votesTotal).toFixed(2) * 100;
 
     const optionChosenByUser = this.getOptionChosenByUser(
       question,
@@ -42,7 +42,7 @@ class ViewQuestion extends Component {
           {optionChosenByUser === "one" && this.attachBadge()}
           <button className="btn btn-primary btn-lg btn-block">
             {question.optionOne.text}
-            <span class="badge badge-light">{percentageOptionOne}%</span>
+            <span className="badge badge-light">{percentageOptionOne}%</span>
           </button>
           <p className="text-center">
             <strong>
@@ -60,7 +60,7 @@ class ViewQuestion extends Component {
           {optionChosenByUser === "two" && this.attachBadge()}
           <button className="btn btn-secondary btn-lg btn-block">
             {question.optionTwo.text}
-            <span class="badge badge-light">{percentageOptionTwo}%</span>
+            <span className="badge badge-light">{percentageOptionTwo}%</span>
           </button>
           <p className="text-center">
             <strong>
@@ -79,7 +79,9 @@ class ViewQuestion extends Component {
   };
 
   attachBadge = () => {
-    return <span class="badge badge-warning option-chosen">Your choice</span>;
+    return (
+      <span className="badge badge-warning option-chosen">Your choice</span>
+    );
   };
 
   showOptions = question => {
@@ -102,10 +104,7 @@ class ViewQuestion extends Component {
   render() {
     const { authedUser, users } = this.props;
     const question = this.getQuestionById();
-    const userAlreadyAnsweredThisQuestion = this.userAlreadyAnsweredThisQuestion(
-      authedUser.id,
-      question,
-    );
+    const isAnsweredByUser = this.isAnsweredByUser(question, authedUser.id);
 
     return (
       <div className="card">
@@ -129,9 +128,8 @@ class ViewQuestion extends Component {
                 <p>
                   <strong>Would you rather:</strong>
                 </p>
-                {!userAlreadyAnsweredThisQuestion && this.showOptions(question)}
-                {userAlreadyAnsweredThisQuestion &&
-                  this.showResults(question, authedUser.id)}
+                {!isAnsweredByUser && this.showOptions(question)}
+                {isAnsweredByUser && this.showResults(question, authedUser.id)}
               </div>
             </div>
           </div>
