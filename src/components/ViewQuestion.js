@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Route } from "react-router-dom";
+import NotFound from "./NotFound";
 
 class ViewQuestion extends Component {
   getQuestionById = () => {
@@ -104,6 +106,11 @@ class ViewQuestion extends Component {
   render() {
     const { authedUser, users } = this.props;
     const question = this.getQuestionById();
+
+    if (question === undefined) {
+      return <Route component={NotFound} />;
+    }
+
     const isAnsweredByUser = this.isAnsweredByUser(question, authedUser.id);
 
     return (

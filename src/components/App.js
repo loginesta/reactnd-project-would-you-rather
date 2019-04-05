@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from "react-redux-loading";
-import Nav from "./Nav";
-import Home from "./Home";
-import Login from "./Login";
+
 import AddQuestion from "./AddQuestion";
-import ViewQuestion from "./ViewQuestion";
+import Home from "./Home";
 import Leaderboard from "./Leaderboard";
+import Login from "./Login";
+import Nav from "./Nav";
+import NotFound from "./NotFound";
+import ViewQuestion from "./ViewQuestion";
 
 class App extends Component {
   componentDidMount() {
@@ -34,7 +36,7 @@ class App extends Component {
                     component={ViewQuestion}
                   />
                   <Route path="/leaderboard" exact component={Leaderboard} />
-                  <Route render={() => <h1>Page not found</h1>} />
+                  <Route component={NotFound} />
                 </Switch>
               </div>
             )}
