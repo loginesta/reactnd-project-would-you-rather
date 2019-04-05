@@ -42,31 +42,59 @@ class Leaderboard extends Component {
     return usersRanking.sort((a, b) => b.score - a.score);
   };
 
+  attachBadge = () => {
+    return (
+      <span className="badge badge-warning highlight highlight-left">
+        That's you
+      </span>
+    );
+  };
+
   render() {
-    console.log(this.props.users);
     const { authedUser, users } = this.props;
     const leaderboard = this.getUsersRanking();
-    console.log(leaderboard);
+
     return (
       <div>
         <h1>Leaderboard</h1>
         {leaderboard.map(ranking => (
-          <div className="card" key={ranking.userId}>
-            <img
-              className="avatar"
-              src={users[ranking.userId].avatarURL}
-              alt=""
-            />
-            {users[ranking.userId].name}
-            <ul>
-              <li>
-                Questions asked: <strong>{ranking.asked}</strong>
-              </li>
-              <li>
-                Questions answered: <strong>{ranking.answered}</strong>
-              </li>
-            </ul>
-            <div className="ranking-score">{ranking.score}</div>
+          <div
+            className={
+              ranking.userId === authedUser.id
+                ? "card text-white bg-dark"
+                : "card"
+            }
+            key={ranking.userId}
+          >
+            {ranking.userId === authedUser.id && this.attachBadge()}
+            <div className="row">
+              <div className="col-sm-4">
+                <img
+                  className="avatar avatar-lg"
+                  src={users[ranking.userId].avatarURL}
+                  alt=""
+                />
+              </div>
+              <div className="col-sm-5">
+                <div className="ranking-wrapper">
+                  <h2>{users[ranking.userId].name}</h2>
+                  <h6>
+                    Questions asked: <strong>{ranking.asked}</strong>
+                  </h6>
+                  <h6>
+                    Questions answered: <strong>{ranking.answered}</strong>
+                  </h6>
+                </div>
+              </div>
+              <div className="col-sm-3 align-middle text-center">
+                <div className="ranking-wrapper">
+                  <h3>Score</h3>
+                  <h2>
+                    <span class="badge badge-primary">{ranking.score}</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
