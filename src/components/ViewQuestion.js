@@ -36,7 +36,7 @@ class ViewQuestion extends Component {
           className={
             optionChosenByUser === "one"
               ? "col-sm alert alert-warning"
-              : "col-sm"
+              : "col-sm alert alert-light"
           }
         >
           {optionChosenByUser === "one" && this.attachBadge()}
@@ -54,7 +54,7 @@ class ViewQuestion extends Component {
           className={
             optionChosenByUser === "two"
               ? "col-sm alert alert-warning"
-              : "col-sm"
+              : "col-sm alert alert-light"
           }
         >
           {optionChosenByUser === "two" && this.attachBadge()}
