@@ -90,7 +90,7 @@ class Leaderboard extends Component {
                 <div className="ranking-wrapper">
                   <h3>Score</h3>
                   <h2>
-                    <span class="badge badge-primary">{ranking.score}</span>
+                    <span className="badge badge-primary">{ranking.score}</span>
                   </h2>
                 </div>
               </div>
