@@ -81,9 +81,7 @@ class ViewQuestion extends Component {
   };
 
   attachBadge = () => {
-    return (
-      <span className="badge badge-warning option-chosen">Your choice</span>
-    );
+    return <span className="badge badge-warning highlight">Your choice</span>;
   };
 
   showOptions = question => {

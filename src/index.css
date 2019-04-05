@@ -56,7 +56,7 @@ code {
   margin: 0 .3em;
 }
 
-.option-chosen {
+.highlight {
   position: absolute;
   right: .5em;
   top: -1em;
