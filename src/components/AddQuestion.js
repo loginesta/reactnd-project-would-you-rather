@@ -9,31 +9,21 @@ class AddQuestion extends Component {
 
   handleAddQuestion = e => {
     e.preventDefault();
-    console.log(33);
+    console.log(this.state);
   };
 
-  handleInputChange = (e, option) => {
+  handleInputChange = e => {
     const text = e.target.value;
-    if (text !== "") {
-      this.setState(function(previousState) {
-        return option === 1
-          ? { ...previousState, optionOne: text }
-          : { ...previousState, optionTwo: text };
-      });
-    }
-  };
+    const option = e.target.name;
 
-  handleChange = function(event, optionIndex) {
-    const text = event.target.value;
-
-    this.setState(function(previousState) {
-      return optionIndex === 1
-        ? { ...previousState, optionOne: text }
-        : { ...previousState, optionTwo: text };
-    });
+    this.setState(previousState => ({
+      ...previousState,
+      [option]: text,
+    }));
   };
 
   render() {
+    const { optionOne, optionTwo } = this.state;
     return (
       <div className="card">
         <div className="question">
@@ -45,8 +35,8 @@ class AddQuestion extends Component {
                   placeholder="Optio One"
                   type="textarea"
                   name="optionOne"
-                  value={this.state.optionOne}
-                  onChange={event => this.handleInputChange(event, 1)}
+                  value={optionOne}
+                  onChange={event => this.handleInputChange(event)}
                 />
               </div>
               <div className="col-sm-6">
@@ -54,8 +44,8 @@ class AddQuestion extends Component {
                   placeholder="Optio Two"
                   type="textarea"
                   name="optionTwo"
-                  value={this.state.optionTwo}
-                  onChange={event => this.handleInputChange(event, 2)}
+                  value={optionTwo}
+                  onChange={event => this.handleInputChange(event)}
                 />
               </div>
             </div>
@@ -64,9 +54,7 @@ class AddQuestion extends Component {
             <button
               className="btn btn-lg btn-outline-primary"
               onClick={this.handleAddQuestion}
-              disabled={
-                this.state.optionOne === "" || this.state.optionTwo === ""
-              }
+              disabled={optionOne === "" || optionTwo === ""}
             >
               Submit
             </button>
