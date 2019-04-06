@@ -15,7 +15,7 @@ function addQuestion(question) {
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
-    const question = { optionOneText, optionTwoText, author: authedUser };
+    const question = { optionOneText, optionTwoText, author: authedUser.id };
 
     dispatch(showLoading());
 

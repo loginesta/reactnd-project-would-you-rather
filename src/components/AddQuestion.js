@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { handleAddQuestion } from "../actions/questions";
 
 class AddQuestion extends Component {
   state = {
@@ -9,7 +10,10 @@ class AddQuestion extends Component {
 
   handleAddQuestion = e => {
     e.preventDefault();
-    console.log(this.state);
+
+    const { optionOne, optionTwo } = this.state;
+    const { dispatch } = this.props;
+    dispatch(handleAddQuestion(optionOne, optionTwo));
   };
 
   handleInputChange = e => {
@@ -24,6 +28,7 @@ class AddQuestion extends Component {
 
   render() {
     const { optionOne, optionTwo } = this.state;
+
     return (
       <div className="card">
         <div className="question">
