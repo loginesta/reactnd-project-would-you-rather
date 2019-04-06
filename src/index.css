@@ -78,3 +78,7 @@ code {
 .ranking-wrapper {
   padding: 1em .7em;
 }
+
+.text-white.bg-dark table {
+  color: #fff;
+}

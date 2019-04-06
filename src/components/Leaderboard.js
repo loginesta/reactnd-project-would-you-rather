@@ -78,12 +78,18 @@ class Leaderboard extends Component {
               <div className="col-sm-5">
                 <div className="ranking-wrapper">
                   <h2>{users[ranking.userId].name}</h2>
-                  <h6>
-                    Questions asked: <strong>{ranking.asked}</strong>
-                  </h6>
-                  <h6>
-                    Questions answered: <strong>{ranking.answered}</strong>
-                  </h6>
+                  <table className="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Questions asked</th>
+                        <td>{ranking.asked}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Questions answered</th>
+                        <td>{ranking.answered}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div className="col-sm-3 align-items-center text-center">
