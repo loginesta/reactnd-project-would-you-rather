@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Route } from "react-router-dom";
-import NotFound from "./NotFound";
 import { handleQuestionAnswer } from "../actions/questions";
+import NotFound from "./NotFound";
 
 class ViewQuestion extends Component {
   getQuestion = () => {
     const questionId = this.props.match.params.question_id;
     const { questions } = this.props;
-    const thisQuestion = Object.values(questions).filter(
-      q => q.id === questionId,
-    );
-    return thisQuestion.shift();
+    const question = Object.values(questions)
+      .filter(q => q.id === questionId)
+      .shift();
+    return question;
   };
 
   isAnswered = (question, authedUserId) => {
@@ -114,39 +113,40 @@ class ViewQuestion extends Component {
     const { authedUser, users } = this.props;
     const question = this.getQuestion();
 
-    if (question === undefined) {
-      return <Route component={NotFound} />;
-    }
-
-    const isAnswered = this.isAnswered(question, authedUser.id);
-
     return (
-      <div className="card">
-        <div className="question">
-          <div className="card-header">
-            <div className="row align-items-center">
-              <div className="col-auto mr-auto">
-                <img
-                  className="avatar"
-                  src={users[question.author].avatarURL}
-                  alt=""
-                />
-                {users[question.author].name} asks...
+      <div>
+        {question === undefined && <NotFound />}
+        {question !== undefined && (
+          <div className="card">
+            <div className="question">
+              <div className="card-header">
+                <div className="row align-items-center">
+                  <div className="col-auto mr-auto">
+                    <img
+                      className="avatar"
+                      src={users[question.author].avatarURL}
+                      alt=""
+                    />
+                    {users[question.author].name} asks...
+                  </div>
+                </div>
+              </div>
+              <div className="question-body">
+                <div className="question-options">
+                  <div className="col-sm">
+                    <p>
+                      <strong>Would you rather:</strong>
+                    </p>
+                    {!this.isAnswered(question, authedUser.id) &&
+                      this.showOptions(question)}
+                    {this.isAnswered(question, authedUser.id) &&
+                      this.showResults(question, authedUser.id)}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="question-body">
-            <div className="question-options">
-              <div className="col-sm">
-                <p>
-                  <strong>Would you rather:</strong>
-                </p>
-                {!isAnswered && this.showOptions(question)}
-                {isAnswered && this.showResults(question, authedUser.id)}
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
     );
   }
