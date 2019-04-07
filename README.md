@@ -1,68 +1,43 @@
+# Would You Rather Project
+
+_Would You Rather_ is a web application that lets a user play the “Would You Rather?” game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is against the rules.
+
+_In this application, users will be able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard._
+
+In this application, users will be able to see all the questions posted, which will be presented separatedly. On the one hand, _there will be the questions the user already answered_ and, on the other hand, _the ones the user haven't answered_.
+
+![Screenshot](https://loginesta.github.io/portfolio/projects/myreads-react-app/images/main-page.png)
+
+For each question the user will have access to the question details. If the question has not been answered by the user, the two options will be displayed in order to vote for one of them. Once the question is answered, the user will also be able to see the number of people and the percentage of people who voted for both options.
+
+![Screenshot](https://loginesta.github.io/portfolio/projects/myreads-react-app/images/main-page.png)
+
+A part from that, _the user will be able to create new questions_, always providing two different options. The new questions will be listed in the home page with the rest of unanswered questions.
+
+![Screenshot](https://loginesta.github.io/portfolio/projects/myreads-react-app/images/search-page.png)
+
+Finally, _the user will be able to see the ranking of users on the leaderboard_. All the existing users are listed there according to their score, which is based on the sum of the number of questions answered and the number of questions asked.
+
+![Screenshot](https://loginesta.github.io/portfolio/projects/myreads-react-app/images/search-page.png)
+
+As a requirement, **users will need to log in** to access to the different pages of this application. In this sense, a way to impersonate an existing user is provided with the application.
+
+## Installation
+
+To get started right away:
+
+- install all project dependencies with `npm install`
+- start the server with `npm start`
+
+## Dependencies
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+And implemented using [React](https://reactjs.org/).
 
-## Available Scripts
+## Important
 
-In the project directory, you can run:
+In order to perform searches, the backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
-### `npm start`
+## Acknowledgements
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This is a project for Udacity's React Fundamentals course. In this sense, Udacity provided a started code (https://github.com/udacity/reactnd-project-would-you-rather-starter) that consisted of a `\_DATA.js` file, which represents a fake database and contains methods that let the developers access the data. The README file of this project outlines how the data is stored and details the methods to access the database.
