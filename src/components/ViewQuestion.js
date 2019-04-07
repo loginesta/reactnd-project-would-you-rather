@@ -5,7 +5,7 @@ import NotFound from "./NotFound";
 import { handleQuestionAnswer } from "../actions/questions";
 
 class ViewQuestion extends Component {
-  getQuestionById = () => {
+  getQuestion = () => {
     const questionId = this.props.match.params.question_id;
     const { questions } = this.props;
     const thisQuestion = Object.values(questions).filter(
@@ -14,7 +14,7 @@ class ViewQuestion extends Component {
     return thisQuestion.shift();
   };
 
-  isAnsweredByUser = (question, authedUserId) => {
+  isAnswered = (question, authedUserId) => {
     return (
       question.optionOne.votes.includes(authedUserId) ||
       question.optionTwo.votes.includes(authedUserId)
@@ -28,21 +28,18 @@ class ViewQuestion extends Component {
       percentageOptionOne = (votesOptionOne / votesTotal).toFixed(2) * 100,
       percentageOptionTwo = (votesOptionTwo / votesTotal).toFixed(2) * 100;
 
-    const optionChosenByUser = this.getOptionChosenByUser(
-      question,
-      authedUserId,
-    );
+    const userAnswer = this.getUserAnswer(question, authedUserId);
 
     return (
       <div className="row align-items-center">
         <div
           className={
-            optionChosenByUser === "one"
+            userAnswer === "one"
               ? "col-sm alert alert-warning"
               : "col-sm alert alert-light"
           }
         >
-          {optionChosenByUser === "one" && this.attachBadge()}
+          {userAnswer === "one" && this.attachBadge()}
           <button className="btn btn-primary btn-lg btn-block">
             {question.optionOne.text}
             <span className="badge badge-light">{percentageOptionOne}%</span>
@@ -55,12 +52,12 @@ class ViewQuestion extends Component {
         </div>
         <div
           className={
-            optionChosenByUser === "two"
+            userAnswer === "two"
               ? "col-sm alert alert-warning"
               : "col-sm alert alert-light"
           }
         >
-          {optionChosenByUser === "two" && this.attachBadge()}
+          {userAnswer === "two" && this.attachBadge()}
           <button className="btn btn-secondary btn-lg btn-block">
             {question.optionTwo.text}
             <span className="badge badge-light">{percentageOptionTwo}%</span>
@@ -75,7 +72,7 @@ class ViewQuestion extends Component {
     );
   };
 
-  getOptionChosenByUser = (question, authedUserId) => {
+  getUserAnswer = (question, authedUserId) => {
     if (question.optionOne.votes.includes(authedUserId)) {
       return "one";
     } else return "two";
@@ -91,7 +88,7 @@ class ViewQuestion extends Component {
         <div className="col-sm text-center">
           <button
             className="btn btn-lg btn-outline-primary btn-block"
-            onClick={e => this.handleAnswer(question, "optionOne")}
+            onClick={e => this.handleClickAnswer(question, "optionOne")}
           >
             {question.optionOne.text}
           </button>
@@ -99,7 +96,7 @@ class ViewQuestion extends Component {
         <div className="col-sm text-center">
           <button
             className="btn btn-lg btn-outline-secondary btn-block"
-            onClick={e => this.handleAnswer(question, "optionTwo")}
+            onClick={e => this.handleClickAnswer(question, "optionTwo")}
           >
             {question.optionTwo.text}
           </button>
@@ -108,20 +105,20 @@ class ViewQuestion extends Component {
     );
   };
 
-  handleAnswer = (question, answer) => {
+  handleClickAnswer = (question, answer) => {
     const { dispatch } = this.props;
     dispatch(handleQuestionAnswer(question, answer));
   };
 
   render() {
     const { authedUser, users } = this.props;
-    const question = this.getQuestionById();
+    const question = this.getQuestion();
 
     if (question === undefined) {
       return <Route component={NotFound} />;
     }
 
-    const isAnsweredByUser = this.isAnsweredByUser(question, authedUser.id);
+    const isAnswered = this.isAnswered(question, authedUser.id);
 
     return (
       <div className="card">
@@ -144,8 +141,8 @@ class ViewQuestion extends Component {
                 <p>
                   <strong>Would you rather:</strong>
                 </p>
-                {!isAnsweredByUser && this.showOptions(question)}
-                {isAnsweredByUser && this.showResults(question, authedUser.id)}
+                {!isAnswered && this.showOptions(question)}
+                {isAnswered && this.showResults(question, authedUser.id)}
               </div>
             </div>
           </div>
