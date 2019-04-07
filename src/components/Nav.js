@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
+import { Link, NavLink } from "react-router-dom";
 import { unsetAuthedUser } from "../actions/authedUser";
 
 class Nav extends Component {
@@ -31,19 +30,19 @@ class Nav extends Component {
           <div className="col-auto mr-auto">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <NavLink to="/" exact className="nav-link">
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/add" className="nav-link">
+                <NavLink to="/add" className="nav-link">
                   New Question
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link to="/leaderboard" className="nav-link">
+                <NavLink to="/leaderboard" className="nav-link">
                   Leaderboard
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
