@@ -13,7 +13,9 @@ class AddQuestion extends Component {
 
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props;
-    dispatch(handleAddQuestion(optionOne, optionTwo));
+    dispatch(handleAddQuestion(optionOne, optionTwo)).then(() =>
+      this.props.history.push("/"),
+    );
   };
 
   handleInputChange = e => {
