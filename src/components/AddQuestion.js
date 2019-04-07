@@ -37,6 +37,11 @@ class AddQuestion extends Component {
           <div className="card-header">Would You Rather</div>
           <div className="card-body">
             <div className="row">
+              <div className="col-sm-12">
+                <div className="alert alert-info">
+                  Please, provide two different options.
+                </div>
+              </div>
               <div className="col-sm-6">
                 <textarea
                   placeholder="Optio One"
