@@ -36,4 +36,4 @@ As a requirement, **users will need to log in** to access to the different pages
 
 ## Acknowledgements
 
-This is a project for Udacity's React Fundamentals course. In this sense, Udacity provided a started code (https://github.com/udacity/reactnd-project-would-you-rather-starter) that consisted of a `\_DATA.js` file, which represents a fake database and contains methods that let the developers access the data. The README file of this project outlines how the data is stored and details the methods to access the database.
+This is a project for Udacity's React Fundamentals course. In this sense, Udacity provided a started code (https://github.com/udacity/reactnd-project-would-you-rather-starter) that consisted of a `_DATA.js` file, which represents a fake database and contains methods that let the developers access the data. The README file of this project outlines how the data is stored and details the methods to access the database.
