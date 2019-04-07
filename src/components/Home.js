@@ -45,6 +45,7 @@ class Home extends Component {
 
   render() {
     const filteredQuestions = this.filterQuestions();
+    const { showAnswered } = this.state;
 
     return (
       <div className="main-container">
@@ -52,7 +53,7 @@ class Home extends Component {
           <button
             type="button"
             className={
-              this.state.showAnswered
+              showAnswered
                 ? "btn btn-outline-secondary"
                 : "btn btn-outline-secondary active"
             }
@@ -63,7 +64,7 @@ class Home extends Component {
           <button
             type="button"
             className={
-              this.state.showAnswered
+              showAnswered
                 ? "btn btn-outline-secondary active"
                 : "btn btn-outline-secondary"
             }
@@ -74,9 +75,7 @@ class Home extends Component {
         </div>
 
         {Object.keys(filteredQuestions).map(qid => (
-          <div className="card" key={qid} id={qid}>
-            <Question question={filteredQuestions[qid]} />
-          </div>
+          <Question question={filteredQuestions[qid]} key={qid} />
         ))}
       </div>
     );

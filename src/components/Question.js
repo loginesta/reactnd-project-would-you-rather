@@ -6,37 +6,39 @@ class Question extends Component {
   render() {
     const { question, users } = this.props;
     return (
-      <div className="question">
-        <div className="card-header">
-          <div className="row align-items-center">
-            <div className="col-auto mr-auto">
-              <img
-                className="avatar"
-                src={users[question.author].avatarURL}
-                alt=""
-              />
-              {users[question.author].name} asks...
-            </div>
-            <div className="col-auto">
-              <Link
-                to={`/questions/${question.id}`}
-                className="btn btn-outline-primary"
-              >
-                View poll
-              </Link>
+      <div className="card">
+        <div className="question">
+          <div className="card-header">
+            <div className="row align-items-center">
+              <div className="col-auto mr-auto">
+                <img
+                  className="avatar"
+                  src={users[question.author].avatarURL}
+                  alt=""
+                />
+                {users[question.author].name} asks...
+              </div>
+              <div className="col-auto">
+                <Link
+                  to={`/questions/${question.id}`}
+                  className="btn btn-outline-primary"
+                >
+                  View poll
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="question-body">
-          <div className="question-options">
-            <div className="col-sm">
-              <p>
-                <strong>Would you rather:</strong>
-              </p>
-              <ul>
-                <li>{question.optionOne.text}</li>
-                <li>{question.optionTwo.text}</li>
-              </ul>
+          <div className="question-body">
+            <div className="question-options">
+              <div className="col-sm">
+                <p>
+                  <strong>Would you rather:</strong>
+                </p>
+                <ul>
+                  <li>{question.optionOne.text}</li>
+                  <li>{question.optionTwo.text}</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
