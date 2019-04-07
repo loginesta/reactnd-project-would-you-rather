@@ -40,7 +40,6 @@ class AddQuestion extends Component {
               <div className="col-sm-6">
                 <textarea
                   placeholder="Optio One"
-                  type="textarea"
                   name="optionOne"
                   value={optionOne}
                   onChange={event => this.handleInputChange(event)}
@@ -49,7 +48,6 @@ class AddQuestion extends Component {
               <div className="col-sm-6">
                 <textarea
                   placeholder="Optio Two"
-                  type="textarea"
                   name="optionTwo"
                   value={optionTwo}
                   onChange={event => this.handleInputChange(event)}
