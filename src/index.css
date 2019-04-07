@@ -64,6 +64,14 @@ code {
   margin: 0 .3em;
 }
 
+.question .card-body textarea {
+  width: 100%;
+}
+
+.question .card-footer button {
+  margin-left: 1em;
+}
+
 .highlight {
   position: absolute;
   right: .5em;
@@ -81,4 +89,8 @@ code {
 
 .text-white.bg-dark table {
   color: #fff;
+}
+
+.hidden {
+  display: none;
 }
