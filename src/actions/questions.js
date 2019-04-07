@@ -41,14 +41,19 @@ function answerQuestion({ authedUser, qid, answer }) {
   };
 }
 
-export function handleQuestionAnswer(info) {
-  return dispatch => {
-    dispatch(answerQuestion(info));
+export function handleQuestionAnswer(question, answer) {
+  return function(dispatch, getState) {
+    const { authedUser } = getState();
 
-    return saveQuestionAnswer(info).catch(e => {
-      console.warn("Error in handleQuestionAnswer: ", e);
-      dispatch(answerQuestion(info));
-      alert("There was an error answering the question. Try again.");
-    });
+    const answerInfo = {
+      authedUser: authedUser.id,
+      qid: question.id,
+      answer,
+    };
+    dispatch(showLoading());
+
+    return saveQuestionAnswer(answerInfo)
+      .then(() => dispatch(answerQuestion(answerInfo)))
+      .then(() => dispatch(hideLoading()));
   };
 }

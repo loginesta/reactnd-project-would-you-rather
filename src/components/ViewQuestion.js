@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Route } from "react-router-dom";
 import NotFound from "./NotFound";
+import { handleQuestionAnswer } from "../actions/questions";
 
 class ViewQuestion extends Component {
   getQuestionById = () => {
@@ -88,17 +89,28 @@ class ViewQuestion extends Component {
     return (
       <div className="row align-items-center">
         <div className="col-sm text-center">
-          <button className="btn btn-lg btn-outline-primary btn-block">
+          <button
+            className="btn btn-lg btn-outline-primary btn-block"
+            onClick={e => this.handleAnswer(question, "optionOne")}
+          >
             {question.optionOne.text}
           </button>
         </div>
         <div className="col-sm text-center">
-          <button className="btn btn-lg btn-outline-secondary btn-block">
+          <button
+            className="btn btn-lg btn-outline-secondary btn-block"
+            onClick={e => this.handleAnswer(question, "optionTwo")}
+          >
             {question.optionTwo.text}
           </button>
         </div>
       </div>
     );
+  };
+
+  handleAnswer = (question, answer) => {
+    const { dispatch } = this.props;
+    dispatch(handleQuestionAnswer(question, answer));
   };
 
   render() {
