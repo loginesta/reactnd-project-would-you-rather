@@ -38,7 +38,7 @@ class ViewQuestion extends Component {
               : "col-sm alert alert-light"
           }
         >
-          {userAnswer === "one" && this.attachBadge()}
+          {userAnswer === "one" && this.displayBadge()}
           <button className="btn btn-primary btn-lg btn-block">
             {question.optionOne.text}
             <span className="badge badge-light">{percentageOptionOne}%</span>
@@ -56,7 +56,7 @@ class ViewQuestion extends Component {
               : "col-sm alert alert-light"
           }
         >
-          {userAnswer === "two" && this.attachBadge()}
+          {userAnswer === "two" && this.displayBadge()}
           <button className="btn btn-secondary btn-lg btn-block">
             {question.optionTwo.text}
             <span className="badge badge-light">{percentageOptionTwo}%</span>
@@ -77,7 +77,7 @@ class ViewQuestion extends Component {
     } else return "two";
   };
 
-  attachBadge = () => {
+  displayBadge = () => {
     return <span className="badge badge-warning highlight">Your choice</span>;
   };
 

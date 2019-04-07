@@ -42,7 +42,7 @@ class Leaderboard extends Component {
     return usersRanking.sort((a, b) => b.score - a.score);
   };
 
-  attachBadge = () => {
+  displayBadge = () => {
     return (
       <span className="badge badge-warning highlight highlight-left">
         That's you
@@ -66,7 +66,7 @@ class Leaderboard extends Component {
             }
             key={ranking.userId}
           >
-            {ranking.userId === authedUser.id && this.attachBadge()}
+            {ranking.userId === authedUser.id && this.displayBadge()}
             <div className="row">
               <div className="col-sm-4">
                 <img
